@@ -931,6 +931,28 @@ DEF ROBOT0 Pioneer3dx {
       recognition Recognition {
       }
     }
+    HokuyoUtm30lx {
+      translation 0 0.2 0
+      rotation    0 1 0 0
+      name        "Hokuyo UTM-30LX"
+      noise       0.0
+      resolution  1080
+    }
+    GPS {
+      type             "satellite"   # {"satellite", "laser"}
+      accuracy         0             # [0, inf)
+      noiseCorrelation 0             # [0, 1]
+      resolution       -1            # {-1, [0, inf)}
+      speedNoise       0             # [0, inf)
+      speedResolution  -1            # {-1, [0, inf)}
+    }
+    InertialUnit {
+      lookupTable [ ]    # lookup table
+      xAxis       TRUE   # {TRUE, FALSE}
+      zAxis       TRUE   # {TRUE, FALSE}
+      yAxis       TRUE   # {TRUE, FALSE}
+      resolution  -1     # {-1, [0, inf)}
+    }
   ]
 }
 DEF ROBOT1 Pioneer3dx {
