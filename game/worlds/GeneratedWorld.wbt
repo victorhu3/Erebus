@@ -1,9 +1,9 @@
-#VRML_SIM R2019b utf8
+#VRML_SIM R2020a utf8
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.999904339440331 0.012895767975643018 0.005001113547384512 0.7400648698256735
-  position 0.0797377570748452 26.58021196874523 32.6072172027324
+  orientation 0.8230743603808652 -0.5208638980474778 -0.22638329663298093 5.311501890775357
+  position 11.956404851317732 8.365194692892985 9.813706851973881
 }
 TexturedBackground {
 }
@@ -933,25 +933,11 @@ DEF ROBOT0 Pioneer3dx {
     }
     HokuyoUtm30lx {
       translation 0 0.2 0
-      rotation    0 1 0 0
-      name        "Hokuyo UTM-30LX"
-      noise       0.0
-      resolution  1080
+      rotation 0 1 0 3.14159
     }
     GPS {
-      type             "satellite"   # {"satellite", "laser"}
-      accuracy         0             # [0, inf)
-      noiseCorrelation 0             # [0, 1]
-      resolution       -1            # {-1, [0, inf)}
-      speedNoise       0             # [0, inf)
-      speedResolution  -1            # {-1, [0, inf)}
     }
     InertialUnit {
-      lookupTable [ ]    # lookup table
-      xAxis       TRUE   # {TRUE, FALSE}
-      zAxis       TRUE   # {TRUE, FALSE}
-      yAxis       TRUE   # {TRUE, FALSE}
-      resolution  -1     # {-1, [0, inf)}
     }
   ]
 }
@@ -960,6 +946,9 @@ DEF ROBOT1 Pioneer3dx {
   name "robot1"
   controller "robot1Controller"
   extensionSlot [
+    HokuyoUtm30lx {
+      translation 0 0.2 0
+    }
     Camera {
       translation 0.04 0.24 0
       fieldOfView 0.9

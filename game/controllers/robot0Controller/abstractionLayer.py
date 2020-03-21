@@ -1,3 +1,5 @@
+import time
+
 def get_camera(robot, timeStep : int = 32) -> object:
     '''
     Get camera object/node, enable it and return to allow for use.
@@ -37,8 +39,8 @@ def move_forward(robot, speed: float = 10.0) -> None:
     '''
     wheels = get_wheels(robot)
     
-    wheels[0].setPosition(float("inf"))
-    wheels[1].setPosition(float("inf"))
+    wheels[0].setPosition(12)
+    wheels[1].setPosition(12)
     
     wheels[0].setVelocity(speed)
     wheels[1].setVelocity(speed)
@@ -61,6 +63,16 @@ def set_wheels(robot, leftWheelVelocity: float, rightWheelVelocity: float) -> No
     wheels[0].setVelocity(leftWheelVelocity)
     wheels[1].setVelocity(rightWheelVelocity)
  
+def stop(robot) -> None:
+    '''
+    Stops robot
+
+    Args:
+        robot : robot class being used. Created with controller.Robot()
+    '''
+
+    set_wheels(robot, 0, 0)
+
 def action(robot, startTime: float, duration: float = 3.0, function = None, *args, **kwargs) -> bool:
     #TODO consider using a class so it can store startTime without the user having to.
     '''
@@ -93,11 +105,18 @@ def get_distance_sensors(robot, timeStep : int = 32) -> list:
         timeStep (int) : time step being used for the robot simulation steps (if none specified, default is 32)
     '''
     sensors = []
-    for i in range(8):
+    for i in range(16):
         sensor = robot.getDistanceSensor('so'+str(i))
         sensors.append(sensor)
         sensors[i].enable(timeStep)
     
     return sensors
 
+def sleep(milliseconds) -> None:
+    '''Delays in milliseconds
 
+    Args:
+        milliseconds: amount of milliseconds to delay
+    '''
+
+    time.sleep(milliseconds / 1000.0)
